@@ -1,52 +1,53 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { asset } from '../utils/assets'
 
 const SECTORS = [
   {
     title: 'Business & Industry',
-    image: '/images/sectors/business.jpg',
-    fallback: '/images/img-6.png',
+    image: asset('images/sectors/business.jpg'),
+    fallback: asset('images/img-6.png'),
     description:
       'Powering workplaces with reliable catering and soft services that keep teams focused and productive.',
   },
   {
     title: 'Energy',
-    image: '/images/sectors/energy.jpg',
-    fallback: '/images/img-9.png',
+    image: asset('images/sectors/energy.jpg'),
+    fallback: asset('images/img-9.png'),
     description:
       'Supporting remote and high-demand energy sites with dependable food and facility solutions.',
   },
   {
     title: 'Defence',
-    image: '/images/sectors/defence.jpg',
-    fallback: '/images/img-8.png',
+    image: asset('images/sectors/defence.jpg'),
+    fallback: asset('images/img-8.png'),
     description:
       'Delivering mission-ready catering and support services for defence environments that never stand still.',
   },
   {
     title: 'Correctional',
-    image: '/images/sectors/correctional.jpg',
-    fallback: '/images/catering-team.png',
+    image: asset('images/sectors/correctional.jpg'),
+    fallback: asset('images/catering-team.png'),
     description:
       'Providing secure, consistent meal and facility services tailored to complex correctional settings.',
   },
   {
     title: 'Healthcare',
-    image: '/images/sectors/healthcare.jpg',
-    fallback: '/images/Gourmet-plated-dish.jpg',
+    image: asset('images/sectors/healthcare.jpg'),
+    fallback: asset('images/Gourmet-plated-dish.jpg'),
     description:
       'Enhancing healing environments with nutritious meals and soft services that support patient wellbeing.',
   },
   {
     title: 'Education',
-    image: '/images/img-5.png',
-    fallback: '/images/Hive.png',
+    image: asset('images/img-5.png'),
+    fallback: asset('images/Hive.png'),
     description:
       'Inspiring healthier, happier learning through nutritious meals students love and families trust.',
   },
   {
     title: 'Support Services by Task+',
-    image: '/images/Support-services-staff.jpg',
-    fallback: '/images/task-plus.png',
+    image: asset('images/Support-services-staff.jpg'),
+    fallback: asset('images/task-plus.png'),
     description:
       'Integrated soft services that elevate spaces, support people, and keep operations running smoothly.',
   },

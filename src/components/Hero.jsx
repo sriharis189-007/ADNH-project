@@ -1,16 +1,17 @@
 import { useState, useEffect, useRef } from 'react'
+import { asset } from '../utils/assets'
 
 const HERO_IMAGES = [
   {
-    src: '/images/catering-team.png',
+    src: asset('images/catering-team.png'),
     alt: 'Catering team preparing food in kitchen',
   },
   {
-    src: '/images/Gourmet-plated-dish.jpg',
+    src: asset('images/Gourmet-plated-dish.jpg'),
     alt: 'Gourmet plated dish',
   },
   {
-    src: '/images/Support-services-staff.jpg',
+    src: asset('images/Support-services-staff.jpg'),
     alt: 'Support services staff',
   },
 ]

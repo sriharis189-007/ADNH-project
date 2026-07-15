@@ -1,13 +1,14 @@
 import { useRef, useEffect, useState, useCallback } from 'react'
 import VisionMission from './VisionMission'
+import { asset } from '../utils/assets'
 
 const IMAGES = [
   {
-    src: '/images/img-8.png',
+    src: asset('images/img-8.png'),
     alt: 'ADNH Catering team celebrating together',
   },
   {
-    src: '/images/img-9.png',
+    src: asset('images/img-9.png'),
     alt: 'Chef preparing food at buffet station',
   },
 ]

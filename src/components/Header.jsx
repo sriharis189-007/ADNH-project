@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { asset } from '../utils/assets'
 
 const NAV_LINKS = [
   { label: 'HOME', href: '#home' },
@@ -22,7 +23,7 @@ export default function Header({ mobileMenuOpen, setMobileMenuOpen }) {
     <header className={`header ${scrolled ? 'header--scrolled' : ''}`}>
       <div className="header__inner container">
         <a href="#home" className="header__logo">
-          <img src="/images/Logo.png" alt="ADNH Catering" className="header__logo-img" />
+          <img src={asset('images/Logo.png')} alt="ADNH Catering" className="header__logo-img" />
         </a>
 
         <nav className={`header__nav ${mobileMenuOpen ? 'header__nav--open' : ''}`}>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { asset } from '../utils/assets'
 
 const EnvelopeIcon = () => (
   <svg className="contact-footer__icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
@@ -198,7 +199,7 @@ export default function ContactFooter() {
               </a>
             </div>
             <a href="#home" className="contact-footer__logo">
-              <img src="/images/Logo-white.png" alt="ADNH Catering" className="contact-footer__logo-img" />
+              <img src={asset('images/Logo-white.png')} alt="ADNH Catering" className="contact-footer__logo-img" />
             </a>
           </div>
           <nav className="contact-footer__links" aria-label="Footer">

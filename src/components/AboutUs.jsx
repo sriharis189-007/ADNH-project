@@ -1,18 +1,19 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { asset } from '../utils/assets'
 
 const SLIDES = [
   {
-    image: '/images/img-6.png',
+    image: asset('images/img-6.png'),
     title: 'Culinary Excellence',
     text: 'We are all in this business for one reason: food is our passion. Behind every menu is a team of chefs who understand flavour, nutrition, and what it takes to deliver exceptional food consistently — wherever we operate. Through our Inspiring Culinary Talent strategy, we focus on three pillars: Training & Development, Innovation and Engagement. We nurture talent through mentoring and structured development, giving chefs room to stretch, lead and innovate. Our annual Kitchen Social showcases and collaborative menu sessions bring teams together to experiment, share ideas and raise the bar. The result is food that looks good, tastes great and performs at scale.',
   },
   {
-    image: '/images/img-5.png',
+    image: asset('images/img-5.png'),
     title: 'Our People',
     text: 'They prepare safe, high-quality meals, maintain clean and welcoming environments, and deliver the essential support services our partners rely on every day. Our people are truly at the heart of everything we do. Together, we have built a people-first culture unlike any other in our industry. Through our industry-leading accommodation, welfare, and recruitment standards, we go the extra mile for our people, so they can go the extra mile for you.',
   },
   {
-    image: '/images/img-4.png',
+    image: asset('images/img-4.png'),
     title: 'Our History and Legacy',
     text: 'Many of our strategic partnerships span decades, evolving from single locations into country-wide portfolios. That continuity has shaped a legacy defined by reliability and excellence – values we embody in everything we do. Nothing brings us greater pride than hearing our clients say they remember ADNH serving meals in their local communities during their childhood in the UAE. Those memories are living proof of our legacy — a testament to being the longest-standing catering and support services provider in the region.',
   },

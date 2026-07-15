@@ -1,8 +1,10 @@
+import { asset } from '../utils/assets'
+
 const BRAND_LOGOS = [
-  { name: 'Husk', image: '/images/husk.png' },
-  { name: 'hive', image: '/images/Hive.png' },
-  { name: 'Food Nation', image: '/images/FoodNation.png' },
-  { name: 'Task+', image: '/images/task-plus.png' },
+  { name: 'Husk', image: asset('images/husk.png') },
+  { name: 'hive', image: asset('images/Hive.png') },
+  { name: 'Food Nation', image: asset('images/FoodNation.png') },
+  { name: 'Task+', image: asset('images/task-plus.png') },
 ]
 
 export default function OurBrands() {
