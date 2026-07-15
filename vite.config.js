@@ -3,6 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  // Required for GitHub Pages project site: username.github.io/ADNH-project/
-  base: '/ADNH-project/',
+  // Relative base so assets work when GitHub Pages serves from main branch root
+  base: './',
 })
