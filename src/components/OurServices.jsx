@@ -52,8 +52,8 @@ const FEATURED = {
 export default function OurServices() {
   return (
     <section id="services" className="our-services bg-pattern">
-      <div className="container">
-        <p className="our-services__label">Solutions</p>
+      <div className="container our-services__header">
+        <p className="section-label our-services__label">Solutions</p>
         <h2 className="section-title our-services__title">Our Services</h2>
         <p className="our-services__intro">
           At ADNH Catering, we provide the widest portfolio of food service and support service solutions in the world. From prestigious venues, hospitals and workplaces, to schools and universities, to defence, offshore and remote locations.

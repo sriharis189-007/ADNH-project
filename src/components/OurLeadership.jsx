@@ -99,8 +99,10 @@ export default function OurLeadership() {
   return (
     <section id="people" className="our-leadership">
       <div className="container our-leadership__inner">
-        <p className="our-leadership__label">Our Team</p>
-        <h2 className="section-title our-leadership__title">Board of Directors</h2>
+        <div className="our-leadership__header">
+          <p className="section-label our-leadership__label">Our Team</p>
+          <h2 className="section-title our-leadership__title">Board of Directors</h2>
+        </div>
 
         <div className="our-leadership__board-wrap">
           <DecorPaths />

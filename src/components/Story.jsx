@@ -3,11 +3,11 @@ import VisionMission from './VisionMission'
 
 const IMAGES = [
   {
-    src: 'https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=900&h=600&fit=crop',
+    src: '/images/img-8.png',
     alt: 'ADNH Catering team celebrating together',
   },
   {
-    src: 'https://images.unsplash.com/photo-1555244162-803834f70033?w=900&h=600&fit=crop',
+    src: '/images/img-9.png',
     alt: 'Chef preparing food at buffet station',
   },
 ]
@@ -53,7 +53,7 @@ export default function Story() {
   return (
     <section id="about" ref={sectionRef} className="story bg-pattern">
       <div className="container">
-        <p className="story__label">About Us</p>
+        <p className="section-label story__label">About Us</p>
         <h2 className="story__title">
           <span className="story__title-gold">The Story Behind</span>{' '}
           <span className="story__title-navy">ADNH Catering</span>
