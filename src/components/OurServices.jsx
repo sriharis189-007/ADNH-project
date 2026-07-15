@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const SERVICES = [
   'Employee Dining',
   'Patient Services',
@@ -50,6 +52,8 @@ const FEATURED = {
 }
 
 export default function OurServices() {
+  const [activeIndex, setActiveIndex] = useState(0)
+
   return (
     <section id="services" className="our-services bg-pattern">
       <div className="container our-services__header">
@@ -60,11 +64,31 @@ export default function OurServices() {
         </p>
       </div>
 
-      <div className="our-services__accordion" role="list" aria-label="Our services">
-        {SERVICES.map((name) => {
+      <div
+        className="our-services__accordion"
+        role="list"
+        aria-label="Our services"
+      >
+        {SERVICES.map((name, index) => {
           const featured = FEATURED[name]
+          const isActive = activeIndex === index
           return (
-            <article key={name} className="our-services__panel" role="listitem">
+            <article
+              key={name}
+              className={`our-services__panel${isActive ? ' our-services__panel--active' : ''}`}
+              role="listitem"
+              tabIndex={0}
+              aria-expanded={isActive}
+              onMouseEnter={() => setActiveIndex(index)}
+              onFocus={() => setActiveIndex(index)}
+              onClick={() => setActiveIndex(index)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault()
+                  setActiveIndex(index)
+                }
+              }}
+            >
               <span className="our-services__panel-label" aria-hidden="true">
                 {name}
               </span>

@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 const VALUES = [
   {
     title: 'Vision',
@@ -43,11 +45,21 @@ const VALUES = [
 ]
 
 export default function VisionMission() {
+  const [activeIndex, setActiveIndex] = useState(null)
+
   return (
     <div className="vision-mission">
-        <div className="vision-mission__values">
-          {VALUES.map((item) => (
-            <div key={item.title} className="vm-value">
+      <div className="vision-mission__values">
+        {VALUES.map((item, index) => {
+          const isActive = activeIndex === index
+          return (
+            <button
+              key={item.title}
+              type="button"
+              className={`vm-value${isActive ? ' vm-value--active' : ''}`}
+              aria-expanded={isActive}
+              onClick={() => setActiveIndex(isActive ? null : index)}
+            >
               <div className="vm-value__front">
                 <div className="vm-value__icon">{item.icon}</div>
                 <h3 className="vm-value__title">{item.title}</h3>
@@ -73,9 +85,10 @@ export default function VisionMission() {
                   <p className="vm-value__text">{item.text}</p>
                 )}
               </div>
-            </div>
-          ))}
-        </div>
+            </button>
+          )
+        })}
+      </div>
     </div>
   )
 }

@@ -19,7 +19,7 @@ const HERO_IMAGES = [
 const AUTO_DELAY = 10000
 
 export default function Hero() {
-  const [activeIndex, setActiveIndex] = useState(0)
+  const [activeIndex, setActiveIndex] = useState(1)
   const [hoveredIndex, setHoveredIndex] = useState(null)
   const isPaused = useRef(false)
   const hoveredRef = useRef(null)

@@ -68,20 +68,35 @@ function shortestOffset(index, active, length) {
   return offset
 }
 
+function getCardMetrics() {
+  if (typeof window === 'undefined') {
+    return { translate: 58, rotate: 26, minScale: 0.72 }
+  }
+  if (window.innerWidth <= 480) {
+    return { translate: 42, rotate: 14, minScale: 0.8 }
+  }
+  if (window.innerWidth <= 768) {
+    return { translate: 48, rotate: 18, minScale: 0.76 }
+  }
+  return { translate: 58, rotate: 26, minScale: 0.72 }
+}
+
 function cardStyle(offset) {
   const abs = Math.abs(offset)
+  const { translate, rotate, minScale } = getCardMetrics()
+
   if (abs > VISIBLE_RANGE) {
     return {
       opacity: 0,
       pointerEvents: 'none',
-      transform: `translate(-50%, -50%) translateX(${offset * 72}%) rotateY(${offset * -32}deg) scale(0.62)`,
+      transform: `translate(-50%, -50%) translateX(${offset * (translate + 14)}%) rotateY(${offset * -rotate}deg) scale(0.62)`,
       zIndex: 0,
     }
   }
 
-  const translateX = offset * 58
-  const rotateY = offset * -26
-  const scale = offset === 0 ? 1 : Math.max(0.72, 1 - abs * 0.1)
+  const translateX = offset * translate
+  const rotateY = offset * -rotate
+  const scale = offset === 0 ? 1 : Math.max(minScale, 1 - abs * 0.1)
   const opacity = offset === 0 ? 1 : Math.max(0.55, 1 - abs * 0.18)
 
   return {
@@ -111,6 +126,7 @@ export default function OurSectors() {
   const [active, setActive] = useState(0)
   const [hoverSide, setHoverSide] = useState(null)
   const [paused, setPaused] = useState(false)
+  const [, setViewportTick] = useState(0)
   const stageRef = useRef(null)
   const dragRef = useRef({ startX: 0, dragging: false })
   const prevOffsetsRef = useRef({})
@@ -128,6 +144,19 @@ export default function OurSectors() {
     const id = window.setInterval(goNext, AUTO_MS)
     return () => window.clearInterval(id)
   }, [paused, goNext])
+
+  useEffect(() => {
+    let frame = 0
+    const onResize = () => {
+      cancelAnimationFrame(frame)
+      frame = requestAnimationFrame(() => setViewportTick((n) => n + 1))
+    }
+    window.addEventListener('resize', onResize)
+    return () => {
+      cancelAnimationFrame(frame)
+      window.removeEventListener('resize', onResize)
+    }
+  }, [])
 
   const handleStageMove = (e) => {
     const stage = stageRef.current
@@ -224,7 +253,24 @@ export default function OurSectors() {
 
         <button
           type="button"
-          className={`our-sectors__nav our-sectors__nav--${hoverSide || 'hidden'}${hoverSide ? ' is-visible' : ''}`}
+          className="our-sectors__nav our-sectors__nav--prev our-sectors__nav--persistent is-visible"
+          aria-label="Previous sector"
+          onClick={goPrev}
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          className="our-sectors__nav our-sectors__nav--next our-sectors__nav--persistent is-visible"
+          aria-label="Next sector"
+          onClick={goNext}
+        >
+          →
+        </button>
+
+        <button
+          type="button"
+          className={`our-sectors__nav our-sectors__nav--desktop our-sectors__nav--${hoverSide || 'hidden'}${hoverSide ? ' is-visible' : ''}`}
           aria-label={hoverSide === 'prev' ? 'Previous sector' : 'Next sector'}
           aria-hidden={!hoverSide}
           tabIndex={hoverSide ? 0 : -1}
@@ -238,6 +284,24 @@ export default function OurSectors() {
         >
           {hoverSide === 'prev' ? '←' : '→'}
         </button>
+
+        <div className="our-sectors__dots" role="tablist" aria-label="Sector slides">
+          {SECTORS.map((sector, index) => (
+            <button
+              key={sector.title}
+              type="button"
+              role="tab"
+              aria-selected={active === index}
+              aria-label={`Show ${sector.title}`}
+              className={`our-sectors__dot${active === index ? ' our-sectors__dot--active' : ''}`}
+              onClick={() => {
+                setActive(index)
+                setPaused(true)
+                window.setTimeout(() => setPaused(false), AUTO_MS)
+              }}
+            />
+          ))}
+        </div>
       </div>
     </section>
   )
